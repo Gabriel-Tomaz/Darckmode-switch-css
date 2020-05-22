@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    overflow: hidden;
+}
+.switch{
+    position: absolute;
+    left: -100%;
+}
+.btSwitch{
+    width: 20%;
+    height: 110px;
+    background-color: #E0E0E0;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+}
+.switch-label{
+    width: 90px;
+    height: 90px;
+    margin: 20px;
+    border-radius: 50%;
+    background-color: #FFF;
+    position: relative;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+#switch:checked ~ .main .switch-label{
+    animation: enable 1.5s;
+    animation-fill-mode: forwards;
+}
+
+#switch:not(:checked) ~ .main .switch-label{
+    animation: unable 1.5s;
+    animation-fill-mode: forwards;
+}
+
+#switch:checked ~ .main .btSwitch{
+    animation: enableColorButton 1s;
+    animation-fill-mode: forwards;
+}
+
+#switch:not(:checked) ~ .main .btSwitch{
+    animation: unableColorButton 1s;
+    animation-fill-mode: forwards;
+}
+
+#switch:checked ~ .main{
+    animation: bgColorEnable 1s;
+    animation-fill-mode: forwards;
+}
+
+#switch:not(:checked) ~ .main{
+    animation: bgColorUnable 1s;
+    animation-fill-mode: forwards;
+}
+
+/*TODAS AS ANIMAÇÕES ESTÃO AQUI*/
+
+/*Efeito de ativação do botão de switch*/
+@keyframes enable{
+    0%{
+        left: 0%;
+        background-image: url(../img/moon.svg);
+    }
+    100%{
+        left: 51%;
+        background-image: url(../img/moon.svg);
+    }
+}
+
+@keyframes unable{
+    0%{
+        left: 51%;
+        background-image: url(../img/sun.svg);
+        
+    }
+    100%{
+        left: 0%;
+        background-image: url(../img/sun.svg);
+    }
+}
+
+@keyframes enableColorButton{
+    0%{
+        background-color: #E0E0E0;
+    }
+    100%{
+        background-color: #6C63FF;
+    }
+}
+@keyframes unableColorButton{
+    0%{
+        background-color: #6C63FF;
+    }
+    100%{
+        background-color: #E0E0E0;
+    }
+}
+
+/*Efeito do plano de fundo*/
+
+@keyframes bgColorEnable{
+    0%{
+        background-color: #FFF;
+    }
+    100%{
+        background-color: #313131;
+    }
+}
+
+
+@keyframes bgColorUnable{
+    0%{
+        background-color: #313131;
+    }
+    100%{
+        background-color: #FFF;
+    }
+}
+
+@media all and (min-width: 10px) and (max-width: 767px) and (orientation: portrait){
+    .btSwitch{
+        width: 70%;
+    }
+}
